@@ -41,18 +41,17 @@
         .header {
             background: linear-gradient(135deg, #1976d2, #42a5f5);
             color: white;
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            min-height: 50px;
         }
         
         .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            min-width: 70px;
         }
         
         .header-center {
@@ -61,29 +60,24 @@
         }
         
         .header-center h1 {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
             margin: 0;
         }
         
-        .header-center p {
-            font-size: 0.9rem;
-            margin: 5px 0 0 0;
-        }
-        
         .header-right {
-            display: flex;
-            gap: 10px;
+            min-width: 70px;
+            text-align: right;
         }
         
         .header-btn {
             background: rgba(255, 255, 255, 0.2);
             color: white;
             border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 6px 10px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             transition: all 0.3s ease;
         }
         
@@ -97,24 +91,6 @@
             opacity: 0.6;
         }
         
-        .page-info-header {
-            text-align: center;
-            padding: 15px 0;
-            border-bottom: 2px solid #e0e0e0;
-            margin-bottom: 20px;
-        }
-        
-        .page-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #1976d2;
-        }
-        
-        .breadcrumb {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 5px;
-        }
         
         .section {
             background: white;
@@ -722,7 +698,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .job-section-header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #1976d2;
         }
         
         .job-list {
@@ -803,7 +785,7 @@
         }
         
         .btn-start {
-            background-color: #1976d2;
+            background-color: #4caf50;
             color: white;
         }
         
@@ -885,49 +867,28 @@
             }
             
             .header {
-                flex-direction: column;
-                padding: 15px;
-                margin-bottom: 15px;
-                gap: 10px;
+                padding: 6px 10px;
+                margin-bottom: 10px;
+                min-height: 45px;
             }
             
-            .header-left, .header-right {
-                width: 100%;
-                justify-content: center;
+            .header-left {
+                min-width: 60px;
             }
             
-            .header-center {
-                order: -1;
+            .header-right {
+                min-width: 60px;
             }
             
             .header-center h1 {
-                font-size: 1.6rem;
-                margin-bottom: 5px;
-            }
-            
-            .header-center p {
-                font-size: 0.85rem;
-            }
-            
-            .header-btn {
-                padding: 10px 16px;
-                font-size: 0.9rem;
-            }
-            
-            /* Page Info Header Mobile */
-            .page-info-header {
-                padding: 8px 0;
-                margin-bottom: 10px;
-                flex-shrink: 0;
-            }
-            
-            .page-title {
                 font-size: 1.3rem;
             }
             
-            .breadcrumb {
-                font-size: 0.8rem;
+            .header-btn {
+                padding: 5px 8px;
+                font-size: 0.75rem;
             }
+            
             
             /* Truck Grid Mobile */
             .truck-grid {
@@ -1106,9 +1067,13 @@
             /* Page and Section Mobile */
             .page {
                 flex: 1;
-                display: flex !important;
                 flex-direction: column;
                 overflow: hidden;
+                display: none;
+            }
+            
+            .page.active {
+                display: flex !important;
             }
             
             .section {
@@ -1122,15 +1087,23 @@
             }
             
             .job-section-header {
-                flex-direction: column;
-                align-items: stretch;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
                 gap: 10px;
+                margin-bottom: 12px;
+            }
+            
+            .job-section-header h2 {
+                font-size: 1.2rem;
+                margin: 0;
+                flex-shrink: 0;
             }
             
             .job-section-header > div {
                 display: flex;
-                justify-content: center;
-                gap: 10px;
+                gap: 6px;
+                flex-shrink: 0;
             }
             
             .job-list {
@@ -1231,32 +1204,17 @@
             </div>
             <div class="header-center">
                 <h1>WGIS</h1>
-                <p>Secure truck selection, run management, and job tracking</p>
             </div>
             <div class="header-right">
                 <button class="header-btn" id="resetBtn" onclick="resetToTruckSelection()">🏠 Home</button>
             </div>
         </div>
         
-        <!-- Page Info Header -->
-        <div class="page-info-header">
-            <div class="page-title" id="pageTitle">Run Overview</div>
-            <div class="breadcrumb" id="breadcrumb">Real-time status</div>
-        </div>
-        
-        <!-- Overview Page -->
-        <div class="page active" id="overviewPage">
-            <div class="section">
-                <h2>📊 Live Run Overview</h2>
-                <div class="overview-grid" id="overviewGrid">
-                    <div class="loading">Loading run overview...</div>
-                </div>
-            </div>
-        </div>
         
         <!-- Truck Selection Page -->
-        <div class="page" id="truckSelectionPage">
+        <div class="page active" id="truckSelectionPage">
             <div class="section">
+                <h2>🚛 Select Your Truck</h2>
                 <div class="truck-grid" id="truckGrid">
                     <div class="loading">Loading trucks...</div>
                 </div>
@@ -1266,6 +1224,7 @@
         <!-- Runs Selection Page -->
         <div class="page" id="runsSelectionPage">
             <div class="section">
+                <h2>📋 Available Runs</h2>
                 <div class="runs-grid" id="runsGrid">
                     <div class="loading">Loading runs...</div>
                 </div>
@@ -1437,7 +1396,7 @@
         let showingCompletedJobs = false;
         
         // Page navigation state
-        let currentPage = 'overview'; // Start with overview
+        let currentPage = 'truck-selection'; // Start with truck selection
         
         // Security
         const PASSCODE = '1289';
@@ -1457,11 +1416,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             restoreSession();
             loadTrucks();
-            loadOverview();
             updatePageNavigation();
-            
-            // Auto-refresh overview every 30 seconds
-            setInterval(loadOverview, 30000);
         });
         
         // Security functions
@@ -1563,9 +1518,9 @@
                         loadRuns().then(() => loadJobs(selectedRun));
                     }, 100);
                 } else {
-                    // Default to overview
-                    currentPage = 'overview';
-                    showPage('overviewPage');
+                    // Default to truck selection
+                    currentPage = 'truck-selection';
+                    showPage('truckSelectionPage');
                 }
                 
             } catch (error) {
@@ -1703,39 +1658,22 @@
         
         function updatePageNavigation() {
             const backBtn = document.getElementById('backBtn');
-            const pageTitle = document.getElementById('pageTitle');
-            const breadcrumb = document.getElementById('breadcrumb');
             
             switch(currentPage) {
-                case 'overview':
-                    backBtn.disabled = true;
-                    pageTitle.textContent = 'Run Overview';
-                    breadcrumb.textContent = 'Real-time status';
-                    break;
                 case 'truck-selection':
-                    backBtn.disabled = false;
-                    pageTitle.textContent = 'Select Your Truck';
-                    breadcrumb.textContent = 'Step 1 of 3';
+                    backBtn.disabled = true;
                     break;
                 case 'runs-selection':
                     backBtn.disabled = false;
-                    pageTitle.textContent = `Available Runs - ${selectedTruck}`;
-                    breadcrumb.textContent = 'Step 2 of 3';
                     break;
                 case 'job-management':
                     backBtn.disabled = false;
-                    pageTitle.textContent = `Job Management - Run ${availableRuns[selectedRun]?.run_number || selectedRun}`;
-                    breadcrumb.textContent = 'Step 3 of 3 - Managing Jobs';
                     break;
             }
         }
         
         function goBack() {
             switch(currentPage) {
-                case 'truck-selection':
-                    currentPage = 'overview';
-                    showPage('overviewPage');
-                    break;
                 case 'runs-selection':
                     currentPage = 'truck-selection';
                     selectedTruck = null;
@@ -2054,7 +1992,17 @@
                 const status = job.status || 'pending';
                 let statusClass = status;
                 
-                const phoneDisplay = job.phone && job.phone !== 'STORE' ? job.phone : null;
+                // Format phone number to preserve leading zeros
+                const formatPhoneNumber = (phone) => {
+                    if (!phone || phone === 'STORE') return null;
+                    const phoneStr = String(phone);
+                    if (phoneStr.length === 9 && !phoneStr.startsWith('0')) {
+                        return '0' + phoneStr; // Add leading zero for Australian numbers
+                    }
+                    return phoneStr;
+                };
+                
+                const phoneDisplay = formatPhoneNumber(job.phone);
                 
                 // Format completion/failure time
                 let timeInfo = '';
@@ -2537,6 +2485,17 @@
             const formattedDate = currentTime.toLocaleDateString();
             const formattedTime = currentTime.toLocaleTimeString();
             
+            // Format phone number to preserve leading zeros
+            const formatPhoneNumber = (phone) => {
+                if (!phone || phone === 'STORE') return phone;
+                // If it's a number, convert to string and ensure it starts with 0 if it's Australian
+                const phoneStr = String(phone);
+                if (phoneStr.length === 9 && !phoneStr.startsWith('0')) {
+                    return '0' + phoneStr; // Add leading zero for Australian numbers
+                }
+                return phoneStr;
+            };
+            
             // Prepare photo URLs for email template (up to 5 photos)
             const photoArray = photoUrls.slice(0, 5);
             while (photoArray.length < 5) {
@@ -2546,10 +2505,11 @@
             const templateParams = {
                 to_email1: 'manager1@company.com', // Replace with actual email
                 to_email2: 'manager2@company.com', // Replace with actual email
+                job_reference: job.ref || 'No Reference',
                 job_name: job.name || 'Unknown Job',
                 job_number: job.job_no || 'Unknown',
                 delivery_address: job.full_address || job.address || 'Address not available',
-                customer_contact: job.phone && job.phone !== 'STORE' ? job.phone : 'Phone not available',
+                customer_contact: formatPhoneNumber(job.phone) || 'Phone not available',
                 driver_comments: driverNotes || 'No comments provided',
                 photo_url: photoArray[0], // Primary photo for backward compatibility
                 photo_count: photoUrls.length,
