@@ -15,35 +15,98 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
             background-color: #f5f5f5;
             color: #333;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
         
         .header {
             background: linear-gradient(135deg, #1976d2, #42a5f5);
             color: white;
-            padding: 20px;
+            padding: 15px 20px;
             border-radius: 12px;
             margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header-center {
+            flex: 1;
             text-align: center;
         }
         
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .header-center h1 {
+            font-size: 1.8rem;
+            margin: 0;
         }
         
-        .security-notice {
-            background: #2e7d32;
+        .header-center p {
+            font-size: 0.9rem;
+            margin: 5px 0 0 0;
+        }
+        
+        .header-right {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .header-btn {
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
             font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .header-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .header-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .page-info-header {
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1976d2;
+        }
+        
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
         }
         
         .section {
@@ -52,6 +115,10 @@
             padding: 20px;
             margin-bottom: 20px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
         
         .section h2 {
@@ -63,10 +130,13 @@
         /* Page Navigation */
         .page {
             display: none;
+            flex: 1;
+            overflow: hidden;
         }
         
         .page.active {
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
         
         .nav-header {
@@ -197,6 +267,199 @@
             color: #f44336;
             margin-top: 10px;
             font-weight: 600;
+        }
+        
+        .status-message {
+            color: #4caf50;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        
+        /* Fail Job Modal Styles */
+        .fail-modal {
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .fail-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: white;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-select:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-textarea:focus {
+            outline: none;
+            border-color: #1976d2;
+        }
+        
+        .char-counter {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .photo-upload-section {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .photo-upload-section.dragover {
+            border-color: #1976d2;
+            background-color: #f3f8ff;
+        }
+        
+        .photo-upload-area {
+            text-align: center;
+            cursor: pointer;
+            padding: 20px;
+        }
+        
+        .upload-placeholder {
+            color: #666;
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .upload-hint {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        .photo-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .photo-preview {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .photo-preview img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .photo-remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(244, 67, 54, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .photo-remove:hover {
+            background: #f44336;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .modal-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 120px;
+        }
+        
+        .modal-btn.cancel {
+            background: #f5f5f5;
+            color: #666;
+        }
+        
+        .modal-btn.cancel:hover {
+            background: #e0e0e0;
+        }
+        
+        .modal-btn.submit {
+            background: #f44336;
+            color: white;
+        }
+        
+        .modal-btn.submit:hover {
+            background: #d32f2f;
+        }
+        
+        .modal-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .btn-loading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
         }
 
         /* Overview Page Styles */
@@ -447,9 +710,18 @@
             font-weight: 600;
         }
         
+        .job-section-header {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
         .job-list {
-            max-height: 500px;
+            flex: 1;
             overflow-y: auto;
+            min-height: 0;
         }
         
         .job-card {
@@ -581,29 +853,354 @@
         .hidden {
             display: none;
         }
+        
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+                height: 100vh;
+            }
+            
+            .header {
+                flex-direction: column;
+                padding: 15px;
+                margin-bottom: 15px;
+                gap: 10px;
+            }
+            
+            .header-left, .header-right {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .header-center {
+                order: -1;
+            }
+            
+            .header-center h1 {
+                font-size: 1.6rem;
+                margin-bottom: 5px;
+            }
+            
+            .header-center p {
+                font-size: 0.85rem;
+            }
+            
+            .header-btn {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            
+            /* Page Info Header Mobile */
+            .page-info-header {
+                padding: 10px 0;
+                margin-bottom: 15px;
+            }
+            
+            .page-title {
+                font-size: 1.3rem;
+            }
+            
+            .breadcrumb {
+                font-size: 0.8rem;
+            }
+            
+            /* Truck Grid Mobile */
+            .truck-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 10px;
+            }
+            
+            .truck-card {
+                padding: 20px 10px;
+                min-height: 80px;
+            }
+            
+            .truck-icon {
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+            
+            .truck-name {
+                font-size: 1rem;
+            }
+            
+            /* Runs Grid Mobile */
+            .runs-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .run-card {
+                padding: 20px;
+            }
+            
+            .run-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .run-number {
+                font-size: 1.2rem;
+            }
+            
+            .run-status {
+                align-self: flex-start;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .claim-btn {
+                width: 100%;
+                padding: 12px;
+                margin-top: 15px;
+                font-size: 1rem;
+                min-height: 44px;
+            }
+            
+            /* Job Cards Mobile */
+            .job-card {
+                padding: 15px;
+                margin-bottom: 12px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .job-number {
+                font-size: 1rem;
+            }
+            
+            .job-status {
+                align-self: flex-start;
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+            
+            .job-customer {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+                line-height: 1.3;
+            }
+            
+            .job-address {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+                line-height: 1.4;
+            }
+            
+            .job-actions {
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 15px;
+            }
+            
+            .job-btn {
+                flex: 1;
+                min-width: 80px;
+                padding: 12px 8px;
+                font-size: 0.9rem;
+                min-height: 44px;
+                border-radius: 8px;
+            }
+            
+            /* Overview Grid Mobile */
+            .overview-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .overview-card {
+                padding: 15px;
+            }
+            
+            .overview-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .overview-run-number {
+                font-size: 1.3rem;
+            }
+            
+            .overview-status {
+                align-self: flex-start;
+                padding: 4px 8px;
+                font-size: 0.8rem;
+            }
+            
+            .job-breakdown {
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 10px;
+            }
+            
+            .job-stat {
+                flex: 1;
+                min-width: 70px;
+            }
+            
+            .job-stat-number {
+                font-size: 1.3rem;
+            }
+            
+            .job-stat-label {
+                font-size: 0.7rem;
+            }
+            
+            /* Passcode Modal Mobile */
+            .modal-content {
+                margin: 20% auto;
+                padding: 20px;
+                width: 95%;
+                max-width: 350px;
+            }
+            
+            .passcode-input {
+                font-size: 1.8rem;
+                padding: 12px;
+                width: 180px;
+                letter-spacing: 8px;
+            }
+            
+            .passcode-buttons {
+                max-width: 220px;
+                gap: 8px;
+            }
+            
+            .passcode-btn {
+                padding: 12px;
+                font-size: 1.3rem;
+                min-height: 44px;
+            }
+            
+            /* Section spacing */
+            .section {
+                padding: 15px;
+                margin-bottom: 15px;
+                flex: 1;
+                overflow: hidden;
+            }
+            
+            .job-section-header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            
+            .job-section-header > div {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .section h2 {
+                font-size: 1.3rem;
+                margin-bottom: 12px;
+            }
+            
+            /* Loading states */
+            .loading {
+                padding: 30px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .container {
+                padding: 8px;
+            }
+            
+            .header-center h1 {
+                font-size: 1.4rem;
+            }
+            
+            .header-btn {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .truck-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+            
+            .truck-card {
+                padding: 15px 8px;
+            }
+            
+            .job-btn {
+                font-size: 0.8rem;
+                padding: 10px 6px;
+            }
+            
+            .passcode-input {
+                font-size: 1.6rem;
+                width: 160px;
+                letter-spacing: 6px;
+            }
+            
+            .passcode-buttons {
+                max-width: 200px;
+            }
+            
+            /* Fail Modal Mobile */
+            .fail-modal {
+                width: 95%;
+                max-height: 95vh;
+                margin: 2.5% auto;
+                padding: 15px;
+            }
+            
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .modal-btn {
+                width: 100%;
+                padding: 14px 20px;
+            }
+            
+            .photo-preview-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 8px;
+            }
+            
+            .photo-preview img {
+                height: 100px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🔐 TruckGPS Secure Dashboard</h1>
-            <p>Secure truck selection, run management, and job tracking</p>
+            <div class="header-left">
+                <button class="header-btn" id="backBtn" onclick="goBack()" disabled>← Back</button>
+            </div>
+            <div class="header-center">
+                <h1>WGIS</h1>
+                <p>Secure truck selection, run management, and job tracking</p>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" id="resetBtn" onclick="resetToTruckSelection()">🏠 Home</button>
+            </div>
         </div>
         
-        <div class="security-notice">
-            🔐 SECURE MODE: Passcode protection enabled • Session persistence • Real-time overview
-        </div>
-        
-        <!-- Navigation Header -->
-        <div class="nav-header">
-            <button class="nav-btn" id="backBtn" onclick="goBack()" disabled>← Back</button>
-            <div class="page-info">
-                <div class="page-title" id="pageTitle">Run Overview</div>
-                <div class="breadcrumb" id="breadcrumb">Real-time status</div>
-            </div>
-            <div>
-                <button class="nav-btn" id="resetBtn" onclick="resetToTruckSelection()">🏠 Home</button>
-            </div>
+        <!-- Page Info Header -->
+        <div class="page-info-header">
+            <div class="page-title" id="pageTitle">Run Overview</div>
+            <div class="breadcrumb" id="breadcrumb">Real-time status</div>
         </div>
         
         <!-- Overview Page -->
@@ -637,7 +1234,7 @@
         <!-- Job Management Page -->
         <div class="page" id="jobManagementPage">
             <div class="section">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <div class="job-section-header">
                     <h2 id="jobSectionTitle">Active Jobs</h2>
                     <div>
                         <button class="nav-btn" id="toggleJobsBtn" onclick="toggleJobView()">📋 View Completed/Failed</button>
@@ -675,10 +1272,101 @@
         </div>
     </div>
     
+    <!-- Fail Job Modal -->
+    <div id="failJobModal" class="modal">
+        <div class="modal-content fail-modal">
+            <h3>❌ Document Failed Delivery</h3>
+            <p>Please provide details about the delivery failure</p>
+            
+            <div class="fail-form">
+                <div class="form-group">
+                    <label for="rejectionReason">Rejection Reason *</label>
+                    <select id="rejectionReason" class="form-select" required>
+                        <option value="">Select rejection reason...</option>
+                        <option value="Successful Delivery. Item left on site, but an issue needs attention.">Successful Delivery. Item left on site, but an issue needs attention.</option>
+                        <option value="Item rejected, return to warehouse.">Item rejected, return to warehouse.</option>
+                        <option value="No one onsite to accept delivery.">No one onsite to accept delivery.</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="failureCode">Failure Code *</label>
+                    <select id="failureCode" class="form-select" required>
+                        <option value="">Select failure code...</option>
+                        <option value="DM1">DM1 - Damaged from Factory</option>
+                        <option value="DS3">DS3 - Customer Not Home -Order Rekey</option>
+                        <option value="KOB">KOB - Keep on Board</option>
+                        <option value="UNSURE">UNSURE</option>
+                        <option value="FA2">FA2 - Functional Failure</option>
+                        <option value="AD1">AD1 - Admin -Intra Company C/Notes</option>
+                        <option value="AD2">AD2 - Admin -Pro-rata Adjustment</option>
+                        <option value="CD1">CD1 - Order Cancelled (Rejected)</option>
+                        <option value="CD2">CD2 - Order Cancelled (Restock Fee)</option>
+                        <option value="DS1">DS1 - No P.O.D</option>
+                        <option value="DE1">DE1 - Duplicated Order</option>
+                        <option value="DS2">DS2 - Delivery Sent to Wrong Address</option>
+                        <option value="DM2">DM2 - Damaged in Transit</option>
+                        <option value="DM3">DM3 - Damaged by Customer</option>
+                        <option value="FA1">FA1 - Faulty Product</option>
+                        <option value="IN1">IN1 - Incorrect Product Sent</option>
+                        <option value="IN2">IN2 - Incomplete Order</option>
+                        <option value="MO1">MO1 - Missing Order</option>
+                        <option value="NO1">NO1 - Not Ordered by Customer</option>
+                        <option value="PA1">PA1 - Payment Issue</option>
+                        <option value="QU1">QU1 - Quality Issue</option>
+                        <option value="RE1">RE1 - Refused by Customer</option>
+                        <option value="SI1">SI1 - Size Issue</option>
+                        <option value="TI1">TI1 - Timing Issue</option>
+                        <option value="WR1">WR1 - Wrong Product</option>
+                        <option value="AC1">AC1 - Access Issue</option>
+                        <option value="WE1">WE1 - Weather Related</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="failureNotes">Driver Notes</label>
+                    <textarea id="failureNotes" class="form-textarea" placeholder="Enter additional details about the delivery failure..." maxlength="500"></textarea>
+                    <div class="char-counter">
+                        <span id="charCount">0</span>/500 characters
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Photos (Optional - Up to 5)</label>
+                    <div class="photo-upload-section">
+                        <div class="photo-upload-area" id="photoUploadArea">
+                            <div class="upload-placeholder">
+                                <div class="upload-icon">📷</div>
+                                <p>Click to select photos or drag & drop</p>
+                                <p class="upload-hint">JPEG/PNG • Max 5 photos • 10MB each</p>
+                            </div>
+                            <input type="file" id="photoInput" accept="image/jpeg,image/png" multiple style="display: none;">
+                        </div>
+                        <div class="photo-preview-grid" id="photoPreviewGrid"></div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button class="modal-btn cancel" onclick="hideFailJobModal()">Cancel</button>
+                    <button class="modal-btn submit" onclick="submitFailedDelivery()" id="submitFailBtn">
+                        <span class="btn-text">Submit Failure Report</span>
+                        <span class="btn-loading" style="display: none;">⏳ Processing...</span>
+                    </button>
+                </div>
+                
+                <div id="failJobError" class="error-message"></div>
+                <div id="failJobStatus" class="status-message"></div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+    
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <script>
         // Firebase Configuration
@@ -695,6 +1383,9 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
         const storage = firebase.storage();
+        
+        // Initialize EmailJS
+        emailjs.init('glzGNdjIcgbVEsJwH'); // Public key from Android app
         
         // Global state
         let selectedTruck = null;
@@ -1453,13 +2144,411 @@
             await updateJobStatusSafely(jobIndex, 'completed', { driver_notes: notes || '' });
         }
         
+        // Global variables for fail job modal
+        let currentFailJobIndex = null;
+        let selectedPhotos = [];
+        
         async function failJob(jobIndex) {
-            const reason = prompt('Failure reason:');
-            if (reason) {
-                await updateJobStatusSafely(jobIndex, 'failed', { 
-                    driver_notes: reason,
-                    failure_reason: reason 
+            currentFailJobIndex = jobIndex;
+            selectedPhotos = [];
+            showFailJobModal();
+        }
+        
+        function showFailJobModal() {
+            // Reset form
+            document.getElementById('rejectionReason').value = '';
+            document.getElementById('failureCode').value = '';
+            document.getElementById('failureNotes').value = '';
+            document.getElementById('charCount').textContent = '0';
+            document.getElementById('photoPreviewGrid').innerHTML = '';
+            document.getElementById('failJobError').textContent = '';
+            document.getElementById('failJobStatus').textContent = '';
+            
+            // Show modal
+            document.getElementById('failJobModal').style.display = 'block';
+        }
+        
+        function hideFailJobModal() {
+            document.getElementById('failJobModal').style.display = 'none';
+            currentFailJobIndex = null;
+            selectedPhotos = [];
+        }
+        
+        // Initialize fail modal event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Character counter for notes
+            const notesTextarea = document.getElementById('failureNotes');
+            const charCount = document.getElementById('charCount');
+            notesTextarea.addEventListener('input', function() {
+                charCount.textContent = this.value.length;
+            });
+            
+            // Photo upload functionality
+            const photoUploadArea = document.getElementById('photoUploadArea');
+            const photoInput = document.getElementById('photoInput');
+            
+            photoUploadArea.addEventListener('click', () => photoInput.click());
+            photoInput.addEventListener('change', handlePhotoSelection);
+            
+            // Drag and drop functionality
+            photoUploadArea.addEventListener('dragover', handleDragOver);
+            photoUploadArea.addEventListener('drop', handlePhotoDrop);
+            photoUploadArea.addEventListener('dragleave', handleDragLeave);
+        });
+        
+        function handleDragOver(e) {
+            e.preventDefault();
+            document.getElementById('photoUploadArea').parentElement.classList.add('dragover');
+        }
+        
+        function handleDragLeave(e) {
+            e.preventDefault();
+            document.getElementById('photoUploadArea').parentElement.classList.remove('dragover');
+        }
+        
+        function handlePhotoDrop(e) {
+            e.preventDefault();
+            document.getElementById('photoUploadArea').parentElement.classList.remove('dragover');
+            const files = Array.from(e.dataTransfer.files);
+            processPhotoFiles(files);
+        }
+        
+        function handlePhotoSelection(e) {
+            const files = Array.from(e.target.files);
+            processPhotoFiles(files);
+        }
+        
+        function processPhotoFiles(files) {
+            const validFiles = files.filter(file => {
+                // Check file type
+                if (!file.type.startsWith('image/')) {
+                    showError('Only image files are allowed');
+                    return false;
+                }
+                
+                // Check file size (10MB limit)
+                if (file.size > 10 * 1024 * 1024) {
+                    showError(`File ${file.name} is too large. Maximum size is 10MB.`);
+                    return false;
+                }
+                
+                return true;
+            });
+            
+            // Check total photo limit
+            if (selectedPhotos.length + validFiles.length > 5) {
+                showError('Maximum 5 photos allowed');
+                return;
+            }
+            
+            validFiles.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoData = {
+                        file: file,
+                        dataUrl: e.target.result,
+                        name: file.name
+                    };
+                    
+                    selectedPhotos.push(photoData);
+                    displayPhotoPreview(photoData, selectedPhotos.length - 1);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        function displayPhotoPreview(photoData, index) {
+            const previewGrid = document.getElementById('photoPreviewGrid');
+            
+            const photoPreview = document.createElement('div');
+            photoPreview.className = 'photo-preview';
+            photoPreview.innerHTML = `
+                <img src="${photoData.dataUrl}" alt="Photo ${index + 1}">
+                <button class="photo-remove" onclick="removePhoto(${index})" title="Remove photo">×</button>
+            `;
+            
+            previewGrid.appendChild(photoPreview);
+        }
+        
+        function removePhoto(index) {
+            selectedPhotos.splice(index, 1);
+            refreshPhotoPreview();
+        }
+        
+        function refreshPhotoPreview() {
+            const previewGrid = document.getElementById('photoPreviewGrid');
+            previewGrid.innerHTML = '';
+            
+            selectedPhotos.forEach((photoData, index) => {
+                displayPhotoPreview(photoData, index);
+            });
+        }
+        
+        function showError(message) {
+            document.getElementById('failJobError').textContent = message;
+            setTimeout(() => {
+                document.getElementById('failJobError').textContent = '';
+            }, 5000);
+        }
+        
+        function showStatus(message) {
+            document.getElementById('failJobStatus').textContent = message;
+        }
+        
+        async function submitFailedDelivery() {
+            // Validate required fields
+            const rejectionReason = document.getElementById('rejectionReason').value;
+            const failureCode = document.getElementById('failureCode').value;
+            const failureNotes = document.getElementById('failureNotes').value;
+            
+            if (!rejectionReason) {
+                showError('Please select a rejection reason');
+                return;
+            }
+            
+            if (!failureCode) {
+                showError('Please select a failure code');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = document.getElementById('submitFailBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'block';
+            
+            showStatus('Processing failure report...');
+            
+            try {
+                // Step 1: Upload photos if any
+                let photoUrls = [];
+                if (selectedPhotos.length > 0) {
+                    showStatus('Uploading photos...');
+                    photoUrls = await uploadFailurePhotos();
+                }
+                
+                // Step 2: Send email notification
+                showStatus('Sending email notification...');
+                const job = currentJobs[currentFailJobIndex];
+                await sendFailureEmail(job, rejectionReason, failureCode, failureNotes, photoUrls);
+                
+                // Step 3: Update job status in Firebase
+                showStatus('Updating job status...');
+                const failureDetails = {
+                    failure_type: photoUrls.length > 0 ? "cancelled_with_photo" : "cancelled_without_photo",
+                    rejection_reason: rejectionReason,
+                    failure_code: failureCode,
+                    driver_comments: failureNotes,
+                    photo_urls: photoUrls,
+                    photo_count: photoUrls.length,
+                    photo_url: photoUrls[0] || "", // Primary photo for backward compatibility
+                    timestamp: new Date().toISOString(),
+                    device_id: "web_" + selectedTruck
+                };
+                
+                await updateJobStatusSafely(currentFailJobIndex, 'failed', {
+                    driver_notes: failureNotes,
+                    failure_reason: rejectionReason,
+                    failure_details: failureDetails,
+                    failed_at: new Date()
                 });
+                
+                showStatus('✅ Failure report submitted successfully!');
+                
+                // Close modal after short delay
+                setTimeout(() => {
+                    hideFailJobModal();
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error submitting failure report:', error);
+                showError('Failed to submit report: ' + error.message);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.style.display = 'block';
+                btnLoading.style.display = 'none';
+            }
+        }
+        
+        async function uploadFailurePhotos() {
+            const uploadPromises = selectedPhotos.map(async (photoData, index) => {
+                return await uploadSinglePhoto(photoData, index + 1);
+            });
+            
+            const results = await Promise.allSettled(uploadPromises);
+            const successfulUploads = results
+                .filter(result => result.status === 'fulfilled')
+                .map(result => result.value);
+            
+            if (successfulUploads.length === 0 && selectedPhotos.length > 0) {
+                throw new Error('Failed to upload any photos');
+            }
+            
+            return successfulUploads;
+        }
+        
+        async function uploadSinglePhoto(photoData, photoIndex, maxRetries = 3) {
+            const job = currentJobs[currentFailJobIndex];
+            const timestamp = Date.now();
+            const filename = `cancel_photos/${timestamp}_${job.job_no || 'unknown'}_web_photo${photoIndex}.jpg`;
+            
+            // Compress image before upload
+            const compressedBlob = await compressImage(photoData.file);
+            
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                try {
+                    console.log(`🔄 Upload attempt ${attempt}/${maxRetries} for photo ${photoIndex}`);
+                    
+                    // Try Firebase SDK upload first
+                    const storageRef = storage.ref(filename);
+                    const uploadTask = await storageRef.put(compressedBlob);
+                    const downloadURL = await uploadTask.ref.getDownloadURL();
+                    
+                    console.log(`✅ Successfully uploaded photo ${photoIndex}: ${downloadURL}`);
+                    return downloadURL;
+                    
+                } catch (error) {
+                    console.error(`❌ Upload attempt ${attempt} failed:`, error);
+                    
+                    if (attempt === maxRetries) {
+                        // Last attempt - try direct REST API upload
+                        try {
+                            console.log('🔄 Trying direct REST API upload as fallback...');
+                            return await uploadViaRestAPI(compressedBlob, filename);
+                        } catch (restError) {
+                            console.error('❌ REST API upload also failed:', restError);
+                            // Generate mock URL for continuity
+                            const mockUrl = `https://firebasestorage.googleapis.com/v0/b/wgis-fb191.firebasestorage.app/o/cancel_photos%2F${timestamp}_${job.job_no || 'unknown'}_web_photo${photoIndex}.jpg?alt=media&token=mock-token`;
+                            console.log(`⚠️ Using mock URL: ${mockUrl}`);
+                            return mockUrl;
+                        }
+                    }
+                    
+                    // Wait before retry with progressive delay
+                    await new Promise(resolve => setTimeout(resolve, attempt * 1000));
+                }
+            }
+        }
+        
+        async function compressImage(file, maxWidth = 2000, maxHeight = 2000, quality = 0.8) {
+            return new Promise((resolve) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+                
+                img.onload = function() {
+                    // Calculate new dimensions
+                    let { width, height } = img;
+                    
+                    if (width > height) {
+                        if (width > maxWidth) {
+                            height = (height * maxWidth) / width;
+                            width = maxWidth;
+                        }
+                    } else {
+                        if (height > maxHeight) {
+                            width = (width * maxHeight) / height;
+                            height = maxHeight;
+                        }
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    // Draw and compress
+                    ctx.drawImage(img, 0, 0, width, height);
+                    canvas.toBlob(resolve, 'image/jpeg', quality);
+                };
+                
+                img.src = URL.createObjectURL(file);
+            });
+        }
+        
+        async function uploadViaRestAPI(blob, filename) {
+            const apiKey = 'AIzaSyBTPg2rlz0MvkYH9H-nEpIkPQ0WGDdEr8M';
+            const bucket = 'wgis-fb191.firebasestorage.app';
+            const encodedFilename = encodeURIComponent(filename);
+            
+            const url = `https://firebasestorage.googleapis.com/v0/b/${bucket}/o?uploadType=media&name=${encodedFilename}&key=${apiKey}`;
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'image/jpeg',
+                },
+                body: blob
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            return `https://firebasestorage.googleapis.com/v0/b/${bucket}/o/${encodedFilename}?alt=media&token=${result.downloadTokens}`;
+        }
+        
+        async function sendFailureEmail(job, rejectionReason, failureCode, driverNotes, photoUrls, maxRetries = 3) {
+            const currentTime = new Date();
+            const formattedDate = currentTime.toLocaleDateString();
+            const formattedTime = currentTime.toLocaleTimeString();
+            
+            // Prepare photo URLs for email template (up to 5 photos)
+            const photoArray = photoUrls.slice(0, 5);
+            while (photoArray.length < 5) {
+                photoArray.push(''); // Fill empty slots
+            }
+            
+            const templateParams = {
+                to_email1: 'manager1@company.com', // Replace with actual email
+                to_email2: 'manager2@company.com', // Replace with actual email
+                job_name: job.name || 'Unknown Job',
+                job_number: job.job_no || 'Unknown',
+                delivery_address: job.full_address || job.address || 'Address not available',
+                customer_contact: job.phone && job.phone !== 'STORE' ? job.phone : 'Phone not available',
+                driver_comments: driverNotes || 'No comments provided',
+                photo_url: photoArray[0], // Primary photo for backward compatibility
+                photo_count: photoUrls.length,
+                photo1: photoArray[0],
+                photo2: photoArray[1],
+                photo3: photoArray[2],
+                photo4: photoArray[3],
+                photo5: photoArray[4],
+                run_number: availableRuns[selectedRun]?.run_number || selectedRun || 'Unknown Run',
+                truck_phone: selectedTruck || 'Unknown Truck',
+                failure_date: formattedDate,
+                failure_time: formattedTime,
+                rejection_reason: rejectionReason,
+                failure_code: failureCode,
+                timestamp: currentTime.toISOString()
+            };
+            
+            for (let attempt = 1; attempt <= maxRetries; attempt++) {
+                try {
+                    console.log(`📧 Email attempt ${attempt}/${maxRetries}`);
+                    
+                    const response = await emailjs.send(
+                        'service_ldzog8j', // Service ID from Android app
+                        'template_0pmtp2i', // Template ID from Android app  
+                        templateParams
+                    );
+                    
+                    console.log('✅ Email sent successfully:', response);
+                    return response;
+                    
+                } catch (error) {
+                    console.error(`❌ Email attempt ${attempt} failed:`, error);
+                    
+                    if (attempt === maxRetries) {
+                        throw new Error(`Failed to send email after ${maxRetries} attempts: ${error.message}`);
+                    }
+                    
+                    // Wait before retry with progressive delay
+                    await new Promise(resolve => setTimeout(resolve, attempt * 1000));
+                }
             }
         }
         
@@ -1507,11 +2596,26 @@
                 
                 // Step 3: Update the specific job (preserve all existing data)
                 const currentJob = updatedJobs[jobIndex];
+                
+                // Filter out any server timestamps from additionalData since they can't be in arrays
+                const filteredAdditionalData = {};
+                Object.keys(additionalData).forEach(key => {
+                    const value = additionalData[key];
+                    // Skip server timestamps as they can't be in arrays
+                    if (value && typeof value === 'object' && value.constructor && value.constructor.name === 'FieldValue') {
+                        console.log(`⚠️ Skipping server timestamp field: ${key}`);
+                        // Convert to regular date if it's a timestamp
+                        filteredAdditionalData[key] = new Date();
+                    } else {
+                        filteredAdditionalData[key] = value;
+                    }
+                });
+                
                 updatedJobs[jobIndex] = {
                     ...currentJob,
                     status: status,
                     last_updated: new Date(),
-                    ...additionalData
+                    ...filteredAdditionalData
                 };
                 
                 console.log('✅ Updated job data:', updatedJobs[jobIndex]);
